@@ -1,0 +1,46 @@
+// Java Code : 
+
+class Solution {
+    public Node reverse(Node head) {
+        if (head.next == null) return head;
+
+        Node curr = head;
+        Node temp = null;
+
+        while (curr != null) {
+            temp = curr.prev;
+            curr.prev = curr.next;
+            curr.next = temp;
+            curr = curr.prev;
+        }
+
+        if (temp != null) head = temp.prev;
+
+        return head;
+    }
+}
+
+
+
+// C++ Code : 
+
+class Solution {
+public:
+    Node* reverse(Node* head) {
+        if (head->next == nullptr) return head;
+
+        Node* curr = head;
+        Node* temp = nullptr;
+
+        while (curr != nullptr) {
+            temp = curr->prev;
+            curr->prev = curr->next;
+            curr->next = temp;
+            curr = curr->prev;
+        }
+
+        if (temp != nullptr) head = temp->prev;
+
+        return head;
+    }
+};
