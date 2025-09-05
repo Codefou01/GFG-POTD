@@ -1,0 +1,66 @@
+// Java Code : 
+
+class Solution {
+    public int lengthOfLoop(Node head) {
+        Node slow = head, fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (slow == fast) {
+                return countLoopNodes(slow);
+            }
+        }
+
+        return 0;
+    }
+
+    int countLoopNodes(Node loopNode) {
+        int count = 1;
+        
+        Node temp = loopNode.next;
+        while (temp != loopNode) {
+            count++;
+            temp = temp.next;
+        }
+        
+        return count;
+    }
+}
+
+
+
+// C++ Code : 
+
+
+class Solution {
+public:
+    int lengthOfLoop(Node* head) {
+
+        Node* slow = head;
+        Node* fast = head;
+
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+
+            if (slow == fast) {
+                return countLoopNodes(slow);
+            }
+        }
+        return 0;
+    }
+
+private:
+    int countLoopNodes(Node* loopNode) {
+        int count = 1;
+        Node* temp = loopNode->next;
+
+        while (temp != loopNode) {
+            count++;
+            temp = temp->next;
+        }
+        return count;
+    }
+};
