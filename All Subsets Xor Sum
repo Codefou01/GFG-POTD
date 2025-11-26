@@ -1,0 +1,72 @@
+// Optimal
+
+// Java Code :
+class Solution {
+    int subsetXORSum(int arr[]) {
+        // code here
+        int or = 0;
+        for(int num : arr) or |= num;
+        
+        return or<<arr.length-1;
+    }
+}
+
+
+// C++ Code
+class Solution {
+public:
+    int subsetXORSum(vector<int>& arr) {
+        int or = 0;
+        for(int num : arr) or |= num;
+
+        return or << (arr.size() - 1);
+    }
+};
+
+
+
+// Brute Force (TLE)
+
+//Java Code : 
+
+class Solution {
+    int ans = 0;
+
+    void backtrack(int idx, int[] nums, int xo) {
+        if (idx == nums.length) {
+            ans += xo;
+            return;
+        }
+        backtrack(idx + 1, nums, xo ^ nums[idx]);
+        backtrack(idx + 1, nums, xo);
+    }
+
+    int subsetXORSum(int[] nums) {
+        backtrack(0, nums, 0);
+        return ans;
+    }
+}
+
+
+
+// C++ Code :
+
+class Solution {
+public:
+    int ans = 0;
+
+    void backtrack(int idx, vector<int>& nums, int xo) {
+        if (idx == nums.size()) {
+            ans += xo;
+            return;
+        }
+        backtrack(idx + 1, nums, xo ^ nums[idx]);
+        backtrack(idx + 1, nums, xo);
+    }
+
+    int subsetXORSum(vector<int>& nums) {
+        backtrack(0, nums, 0);
+        return ans;
+    }
+};
+
